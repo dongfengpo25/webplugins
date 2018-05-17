@@ -1,0 +1,38 @@
+{
+    "name": "amazon",
+    "version": "1.0",
+    "description": "auto login, auto view.",
+    "manifest_version": 2,
+    "browser_action": {
+        "default_icon": "icon.jpg"
+        //,"default_popup": "popup.html"
+    },
+    "permissions": [
+    	//跨域请求
+	  "tabs", "http://*/*"
+	],
+    "content_scripts": [
+        {
+            "matches": ["http://*/*","https://*/*"],
+            "js": [
+                "jquery-3.0.0/jquery-3.0.0.min.js",
+				"jquery-3.0.0/jquery.cookie.js"
+                //"layer/layer.js"
+                //"layui-v2.1.5/layui.all.js"
+            ],
+            "css": [
+                //"layer/skin/layer.css"
+                //"layui-v2.1.5/css/modules/layer/default/layer.css"
+            ]
+            //,"all_frames":true
+        },
+        {
+            "matches": ["http://*/*","https://*/*"],//充许运行插件js的地址
+            "js": [
+                "main.js"
+            ],
+            //"all_frames":true,//缺省是false，也就是只在最上层frame中运行。
+            "run_at":"document_idle"//页面加载后
+        }
+    ]
+}
